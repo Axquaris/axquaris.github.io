@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Domas Buracas</title>
+
+    <meta name="author" content="Domas Buracas">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    
+    <link rel="stylesheet" href="resources/darkmode_button.css">
+    <script src="resources/darkmode_button.js"></script>         
+</head>
+
+<body>
+    <table class="main-column">
+    <!-- <tbody> -->
+    <tr style="padding:0px">
+    <td style="padding:0px">
+
+        <!-- Top block with blurb and picture -->
+        <table class="tblock bgblock"><tbody><tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1 class="name" style="text-align: left; margin: 0px; padding-top: 5px;">
+                        Domas Buracas
+                    </h1>
+                    
+                    <!-- Toggle for light / dark mode -->
+                    <button class="theme-toggle" id="theme-toggle" title="Toggles light &amp; dark" aria-label="light" aria-live="polite">
+                        <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                            <mask class="moon" id="moon-mask">
+                                <rect x="0" y="0" width="100%" height="100%" fill="white"></rect>
+                                <circle cx="24" cy="10" r="6" fill="black"></circle>
+                            </mask>
+                            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor"></circle>
+                            <g class="sun-beams" stroke="currentColor">
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+
+                <p>I'm an applied research scientist and founding member of New Theory in San Francisco,
+                    where I work on geometric world models.
+                </p>
+                <p>
+                    I've worked on AI for robotics and autonomous vehicles at NVIDIA, Shield AI, and Berkeley AI Research.
+                    I received my bachelors in computer science at <a href="http://www.eecs.berkeley.edu/"></a>UC Berkeley</a>.
+                </p>
+                <!-- <p>
+                    At NVIDIA I've worked on
+                    <a href="https://www.google.com/glass/start/">Glass</a>,
+                    <a href="https://ai.googleblog.com/2014/04/lens-blur-in-new-google-camera-app.html">Lens Blur</a>,
+                    and <a href="https://blog.google/products/maps/three-maps-updates-io-2022/">Maps</a>.
+                    I did my PhD at <a href="http://www.eecs.berkeley.edu/">UC Berkeley</a>,
+                    where I was advised by <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>.
+                    I've received the <a href="https://www.thecvf.com/?page_id=413#YRA">PAMI Young Researcher Award</a>.
+                </p> -->
+                <p style="text-align:center">
+                    <a href="mailto:domceb@gmail.com">Email</a> &nbsp;/&nbsp;
+                    <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
+                    <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp;/&nbsp; -->
+                    <!-- <a href="https://scholar.google.com/citations?hl=en&user=jktWnL8AAAAJ">Scholar</a> -->
+                    <!-- &nbsp;/&nbsp; -->
+                    <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
+                    <a href="https://github.com/axquaris/">Github</a>
+                </p>
+            </td>
+            <td style="padding:2.5%;width:40%;max-width:40%">
+                <a href="resources/headshot.jpg">
+                    <img
+                        style="width:100%;max-width:100%;object-fit: cover; border-radius: 10px;"
+                        alt="profile photo"
+                        src="resources/headshot.jpg"
+                        class="hoverZoomLink"
+                    >
+                </a>
+            </td>
+        </tr></tbody></table>
+
+        <!-- Main Body with Research -->
+        <table class="tblock bgblock light-theme-only"><tbody><tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2>Research</h2>
+                <p>
+                    My interests include computer vision, inverse graphics, geometric deep learning, and world models.
+                    Most of my work is about incorporating geometric structures to learn representations of the physical world from images.
+                </p>
+            </td>
+        </tr></tbody></table>
+
+        <!-- Main Body with work experience -->
+        <table class="tblock bgblock light-theme-only"><tbody><tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2>Work Experience</h2>
+                <p>
+                    
+                </p>
+            </td>
+        </tr></tbody></table>
+
+        <!-- Research projects -->
+        <div id="papers"></div>
+        
+        <!-- Miscellania -->
+        <div class="bgblock light-theme-only">
+        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+            <tbody><tr>
+                <td>
+                    <h2>Miscellanea</h2>
+                </td>
+            </tr></tbody>
+        </table>
+        <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+            <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                    <img src="images/cvf.jpg">
+                </td>
+                <td width="75%" valign="center">
+                    <a href="https://cvpr.thecvf.com/Conferences/2024/Organizers">Area Chair, CVPR
+                        2024</a>
+                    <br>
+                    <a href="https://cvpr2023.thecvf.com/Conferences/2023/Organizers">Demo Chair, CVPR
+                        2023</a>
+                    <br>
+                    <a href="https://cvpr2022.thecvf.com/area-chairs">Area Chair, CVPR 2022</a>
+                    <br>
+                    <a href="http://cvpr2021.thecvf.com/area-chairs">Area Chair & Award Committee
+                        Member, CVPR 2021</a>
+                    <br>
+                    <a href="http://cvpr2019.thecvf.com/area_chairs">Area Chair, CVPR 2019</a>
+                    <br>
+                    <a href="http://cvpr2018.thecvf.com/organizers/area_chairs">Area Chair, CVPR
+                        2018</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                    <img src="images/cs188.jpg" alt="cs188">
+                </td>
+                <td width="75%" valign="center">
+                    <a href="http://inst.eecs.berkeley.edu/~cs188/sp11/announcements.html">Graduate
+                        Student Instructor, CS188 Spring 2011</a>
+                    <br>
+                    <a href="http://inst.eecs.berkeley.edu/~cs188/fa10/announcements.html">Graduate
+                        Student Instructor, CS188 Fall 2010</a>
+                    <br>
+                    <a href="http://aima.cs.berkeley.edu/">Figures, "Artificial Intelligence: A Modern
+                        Approach", 3rd Edition</a>
+                </td>
+            </tr>
+
+            <!-- Blog posts -->
+            <!-- <tr>
+                <td align="center" style="padding:20px;width:25%;vertical-align:middle">
+                    <h2>Basically <br> Blog Posts</h2>
+                </td>
+                <td width="75%" valign="middle">
+                    <a href="https://arxiv.org/abs/2112.11687">Squareplus: A Softplus-Like Algebraic
+                        Rectifier</a>
+                    <br>
+                    <a href="https://arxiv.org/abs/2010.09714">A Convenient Generalization of Schlick's
+                        Bias and Gain Functions</a>
+                    <br>
+                    <a href="https://arxiv.org/abs/1704.07483">Continuously Differentiable Exponential
+                        Linear Units</a>
+                    <br>
+                    <a href="https://jonbarron.info/data/cvpr2023_llm_workshop_annotated.pdf">Scholars &
+                        Big Models: How Can Academics Adapt?</a>
+                </td>
+            </tr> -->
+
+
+        </tbody></table>
+        <table class="tblock"><tbody>
+            <tr>
+                <td style="padding:0px;padding-right:10px;">
+                    <br>
+                    <p style="text-align:right;font-size:small;">
+                        This site is based on Jon Barron's <a
+                            href="https://github.com/jonbarron/jonbarron_website">website</a>.
+                    </p>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+
+        <!-- Main Body with work experience -->
+        <table class="tblock bgblock dark-theme-only"><tbody><tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2>Art</h2>
+                <p>
+                    
+                </p>
+            </td>
+        </tr></tbody></table>
+    </td>
+    </tr>
+    </table>
+
+    <!-- <script>
+    // Function to load external HTML content
+    function loadExternalContent() {
+        fetch('papers.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById('papers').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+    
+    // Call the function to load content when the page loads
+    window.onload = loadExternalContent;
+    </script> -->
+</body>
+
+</html>
