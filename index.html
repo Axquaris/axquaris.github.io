@@ -23,7 +23,7 @@
 
         <!-- Top block with blurb and picture -->
         <table class="tblock bgblock"><tbody><tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
+            <td style="padding-left:2.5%; width:63%; vertical-align:middle">
                 <div style="display: flex; justify-content: space-between;">
                     <h1 class="name" style="text-align: left; margin: 0px; padding-top: 5px;">
                         Domas Buracas
@@ -78,11 +78,11 @@
                 </p>
             </td>
             <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="resources/headshot.jpg">
+                <a href="images/headshot.jpg">
                     <img
                         style="width:100%;max-width:100%;object-fit: cover; border-radius: 10px;"
                         alt="profile photo"
-                        src="resources/headshot.jpg"
+                        src="images/headshot.jpg"
                         class="hoverZoomLink"
                     >
                 </a>
@@ -91,40 +91,40 @@
 
         <!-- Main Body with Research -->
         <table class="tblock bgblock light-theme-only"><tbody><tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
+            <td style="padding:2.5%; width:100%; vertical-align:middle">
                 <h2>Research</h2>
                 <p>
                     My interests include computer vision, inverse graphics, geometric deep learning, and world models.
                     Most of my work is about incorporating geometric structures to learn representations of the physical world from images.
                 </p>
+
+
+                <!-- Research projects -->
+                <div id="papers_html"></div>
             </td>
         </tr></tbody></table>
 
         <!-- Main Body with work experience -->
-        <table class="tblock bgblock light-theme-only"><tbody><tr>
+        <!-- <table class="tblock bgblock light-theme-only"><tbody><tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
                 <h2>Work Experience</h2>
                 <p>
                     
                 </p>
             </td>
-        </tr></tbody></table>
+        </tr></tbody> -->
+    </table>
 
-        <!-- Research projects -->
-        <div id="papers"></div>
-        
+
         <!-- Miscellania -->
-        <div class="bgblock light-theme-only">
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+        <!-- <table class="tblock bgblock">
             <tbody><tr>
-                <td>
+                <td style="padding:2.5%;"">
                     <h2>Miscellanea</h2>
                 </td>
             </tr></tbody>
-        </table>
-        <table width="100%" align="center" border="0" cellpadding="20"><tbody>
             <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
+                <td style="padding:2.5%; width:25%; vertical-align:middle">
                     <img src="images/cvf.jpg">
                 </td>
                 <td width="75%" valign="center">
@@ -149,13 +149,7 @@
                 <td style="padding:20px;width:25%;vertical-align:middle">
                     <img src="images/cs188.jpg" alt="cs188">
                 </td>
-                <td width="75%" valign="center">
-                    <a href="http://inst.eecs.berkeley.edu/~cs188/sp11/announcements.html">Graduate
-                        Student Instructor, CS188 Spring 2011</a>
-                    <br>
-                    <a href="http://inst.eecs.berkeley.edu/~cs188/fa10/announcements.html">Graduate
-                        Student Instructor, CS188 Fall 2010</a>
-                    <br>
+                <td width="75%">
                     <a href="http://aima.cs.berkeley.edu/">Figures, "Artificial Intelligence: A Modern
                         Approach", 3rd Edition</a>
                 </td>
@@ -166,70 +160,45 @@
                 <td align="center" style="padding:20px;width:25%;vertical-align:middle">
                     <h2>Basically <br> Blog Posts</h2>
                 </td>
-                <td width="75%" valign="middle">
-                    <a href="https://arxiv.org/abs/2112.11687">Squareplus: A Softplus-Like Algebraic
-                        Rectifier</a>
-                    <br>
-                    <a href="https://arxiv.org/abs/2010.09714">A Convenient Generalization of Schlick's
-                        Bias and Gain Functions</a>
-                    <br>
-                    <a href="https://arxiv.org/abs/1704.07483">Continuously Differentiable Exponential
-                        Linear Units</a>
-                    <br>
+                <td width="75%">
                     <a href="https://jonbarron.info/data/cvpr2023_llm_workshop_annotated.pdf">Scholars &
                         Big Models: How Can Academics Adapt?</a>
                 </td>
             </tr> -->
-
-
+            
         </tbody></table>
-        <table class="tblock"><tbody>
-            <tr>
-                <td style="padding:0px;padding-right:10px;">
-                    <br>
-                    <p style="text-align:right;font-size:small;">
-                        This site is based on Jon Barron's <a
-                            href="https://github.com/jonbarron/jonbarron_website">website</a>.
-                    </p>
-                </td>
-            </tr>
-        </tbody></table>
-        </div>
-
-        <!-- Main Body with work experience -->
-        <table class="tblock bgblock dark-theme-only"><tbody><tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Art</h2>
-                <p>
-                    
-                </p>
-            </td>
-        </tr></tbody></table>
     </td>
     </tr>
     </table>
 
-    <!-- <script>
-    // Function to load external HTML content
-    function loadExternalContent() {
-        fetch('papers.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(html => {
-                document.getElementById('papers').innerHTML = html;
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-    }
-    
-    // Call the function to load content when the page loads
-    window.onload = loadExternalContent;
-    </script> -->
-</body>
+    <script>
+        // Function to load external HTML content
+        function loadExternalContent() {
+            fetch('papers.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('papers_html').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+        
+        // Call the function to load content when the page loads
+        window.onload = loadExternalContent;
+    </script>
 
+    <!-- <br> -->
+    
+    <footer>
+        <p style="border:10px; margin:10px; text-align:right; font-size:small;">
+            This site is based on Jon Barron's <a href="https://github.com/jonbarron/jonbarron_website">website</a>.
+        </p>
+    </footer>
+</body>
 </html>

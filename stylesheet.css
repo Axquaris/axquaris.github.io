@@ -1,11 +1,4 @@
 /* Color Palette */
-/* :root {
-	--background-color: #cfc3e0;
-	--border-color: #000;
-
-	--header-color: #000000;
-	--text-color: #000000;
-} */
 :root {
 	--background-color: #f1f1f1;
 	--border-color: #d5d5d5;
@@ -24,11 +17,11 @@
 }
 
 body {
-	background-image: url("resources/background.jpg");
+	/* background-image: url("images/background.jpg"); */
 }
 
 [data-theme=dark] body {
-	background-image: url("resources/background_dark.png");
+	background-image: url("images/background_dark.png");
 }
 
 .main-column {
