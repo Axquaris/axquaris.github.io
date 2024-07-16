@@ -18,6 +18,8 @@
 
 body {
 	/* background-image: url("images/background.jpg"); */
+    height: 120%;
+    overflow: visible;
 }
 
 [data-theme=dark] body {
@@ -28,7 +30,7 @@ body {
 	width: 100%;
 	max-width: 800px;
 
-	margin-top: 150px;
+	margin-top: 100px;
 	margin-right: auto;
 	margin-left: auto;
 
