@@ -23,7 +23,7 @@ body {
 }
 
 [data-theme=dark] body {
-	background-image: url("images/background_dark.png");
+	background-image: url("images/background_dark.jpg");
 }
 
 .main-column {
