@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manifold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --bone:#faf9fc;
+  --ink:#101014;
+  --graphite:#56566b;
+  --violet:#6d28d9;
+  --violet-deep:#4c1d95;
+  --lilac:#ece7fb;
+  --hair:#e5e2ee;
+  --card:#ffffff;
+
+  --display:"Bodoni Moda",Didot,Georgia,serif;
+  --body:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"Azeret Mono",ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bone);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--violet);text-decoration:none}
+a:hover{color:var(--violet-deep)}
+a:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:3px}
+
+.wrap{max-width:1080px;margin:0 auto;padding-inline:22px;padding-block:0 84px}
+
+.tag{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--graphite);
+}
+
+/* ================= hero ================= */
+.hero{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:center;
+  padding-block:64px 44px;
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(3rem,9.5vw,5.6rem);
+  line-height:.92;
+  letter-spacing:-.015em;
+  margin:.18em 0 .24em;
+}
+.hero h1 em{font-style:italic;color:var(--violet)}
+.hero .deck{
+  font-family:var(--display);
+  font-size:clamp(1.15rem,2.4vw,1.5rem);
+  font-style:italic;
+  line-height:1.42;
+  color:var(--graphite);
+  max-width:34ch;
+  margin:0 0 1.5em;
+}
+.contact{display:flex;flex-wrap:wrap;gap:8px}
+.contact a{
+  font-family:var(--mono);
+  font-size:.74rem;
+  letter-spacing:.04em;
+  padding:7px 14px;
+  border:1px solid var(--hair);
+  border-radius:2px;
+  color:var(--ink);
+  background:var(--card);
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.contact a:hover{background:var(--violet);border-color:var(--violet);color:#fff}
+
+.rosette{display:flex;flex-direction:column;align-items:center;gap:14px}
+.rosette .disc{
+  width:100%;
+  aspect-ratio:1;
+  background:var(--lilac);
+  border-radius:50%;
+  overflow:hidden;
+}
+.rosette canvas{width:100%;height:100%;display:block}
+.rosette figcaption{
+  font-family:var(--mono);
+  font-size:.6rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--violet-deep);
+  text-align:center;
+}
+
+/* ================= keyword rule ================= */
+.keywords{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  padding-block:16px;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--hair);
+}
+
+/* ================= statement ================= */
+.statement{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:40px;
+  padding-block:54px;
+  border-bottom:1px solid var(--hair);
+  align-items:start;
+}
+.statement p{
+  margin:0;
+  font-size:1.22rem;
+  line-height:1.55;
+  max-width:56ch;
+  text-wrap:pretty;
+}
+.statement p strong{font-weight:600;color:var(--violet-deep)}
+
+/* ================= work grid ================= */
+.section-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  padding-block:46px 22px;
+}
+.section-title h2{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:2.4rem;
+  line-height:1;
+  margin:0;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--hair);
+  border-radius:3px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  transition:border-color .16s ease,transform .16s ease;
+}
+.card:hover{border-color:var(--violet);transform:translateY(-2px)}
+.card .plate{
+  background:#fff;
+  border-bottom:1px solid var(--hair);
+  aspect-ratio:16/10;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  padding:6px 6px 12px;
+}
+.card .plate img{width:100%;height:100%;object-fit:contain}
+.card .head{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.card h3{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:1.24rem;
+  line-height:1.22;
+  margin:0;
+  text-wrap:balance;
+}
+.card h3 a{color:var(--ink)}
+.card h3 a:hover{color:var(--violet)}
+.card .authors{font-size:.82rem;color:var(--graphite);margin:0;line-height:1.55}
+.card .authors .me{color:var(--ink);font-weight:600}
+.card .foot{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:auto;
+  padding-top:10px;
+  border-top:1px solid var(--hair);
+}
+.card .venue{
+  font-family:var(--mono);
+  font-size:.63rem;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--violet-deep);
+  background:var(--lilac);
+  padding:3px 8px;
+  border-radius:2px;
+}
+.card .out{display:flex;gap:12px;font-family:var(--mono);font-size:.7rem}
+.card.wide{grid-column:span 2;flex-direction:row;align-items:stretch}
+.card.wide .plate{
+  flex:0 0 320px;
+  border-bottom:0;
+  border-right:1px solid var(--hair);
+  aspect-ratio:auto;
+  padding:8px 14px 8px 8px;
+}
+.card.wide .body{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0;padding-left:4px}
+.card.wide h3{font-size:1.62rem}
+
+/* ================= orgs ================= */
+.orgline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px 30px;
+  padding-block:22px;
+  border-top:1px solid var(--hair);
+  border-bottom:1px solid var(--hair);
+  margin-top:46px;
+}
+.orgline div{display:flex;flex-direction:column}
+.orgline .org{font-family:var(--display);font-size:1.32rem;line-height:1.2}
+
+footer{
+  padding-top:30px;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+@media (max-width:880px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-block:44px 32px}
+  .rosette{max-width:360px;order:-1}
+  .statement{grid-template-columns:1fr;gap:16px;padding-block:38px}
+  .grid{grid-template-columns:1fr}
+  .card.wide{grid-column:span 1;flex-direction:column}
+  .card.wide .plate{flex:none;border-right:0;border-bottom:1px solid var(--hair);aspect-ratio:16/10;padding:6px 6px 12px}
+  .card.wide h3{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= hero ================= -->
+  <header class="hero">
+    <div>
+      <p class="tag">Geometric deep learning</p>
+      <h1>Domas<br>Buracas</h1>
+      <p class="deck">My research is at the intersection of 3D vision, robotics, and computer graphics.</p>
+      <nav class="contact" aria-label="Contact and profiles">
+        <a href="mailto:domasburacas@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=jktWnL8AAAAJ">Scholar</a>
+        <a href="https://github.com/dekahaedra/">GitHub</a>
+        <a href="https://www.linkedin.com/in/dburacas">LinkedIn</a>
+      </nav>
+    </div>
+    <figure class="rosette" style="margin:0">
+      <div class="disc">
+        <canvas id="rosette" width="720" height="720" aria-label="Generated point rosette with six-fold symmetry"></canvas>
+      </div>
+      <figcaption>Six-fold symmetry &middot; generated</figcaption>
+    </figure>
+  </header>
+
+  <div class="keywords">
+    <span class="tag">Equivariant neural networks</span>
+    <span class="tag">World models for robotics</span>
+    <span class="tag">Neural radiance fields</span>
+    <span class="tag">Compositionality</span>
+  </div>
+
+  <!-- ================= statement ================= -->
+  <section class="statement">
+    <p class="tag">Research</p>
+    <p>I work on developing geometric architectures which use <strong>structure of the world</strong> &mdash; such as symmetries and compositionality &mdash; to build more efficient and generalizable learning systems. I am particularly interested in world models for robotics, equivariant neural networks, and neural (radiance) fields.</p>
+  </section>
+
+  <!-- ================= work ================= -->
+  <div class="section-title">
+    <h2>Selected work</h2>
+    <span class="tag">Five papers, 2021&ndash;2025</span>
+  </div>
+
+  <div class="grid">
+
+    <article class="card wide">
+      <a class="plate" href="https://arxiv.org/abs/2501.01999"><img src="../images/eqstudy.png" alt="Figure: lifting scalar and vector inputs to a sphere for an equivariance study"></a>
+      <div class="body">
+        <h3><a href="https://arxiv.org/abs/2501.01999">Probing Equivariance and Symmetry Breaking in Convolutional Networks</a></h3>
+        <p class="authors">Sharvaree Vadgama, Mohammad Mohaiminul Islam*, <span class="me">Domas Buracas*</span>, Christian A Shewmake, Artem Moskalev, Erik J Bekkers</p>
+        <div class="foot">
+          <span class="venue">NeurIPS 2025</span>
+          <div class="out"><a href="https://arxiv.org/abs/2501.01999">arXiv &rarr;</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="plate" href="https://arxiv.org/abs/2407.09468"><img src="../images/beyondeuclid.png" alt="Figure: grid of geometric, topological and algebraic machine learning structures"></a>
+      <h3><a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">Beyond Euclid: An Illustrated Guide to Modern Machine Learning with Geometric, Topological, and Algebraic Structures</a></h3>
+      <p class="authors">Mathilde Papillon*, Sophia Sanborn*, Johan Mathe*, Louisa Cornelis*, Abby Bertics, <span class="me">Domas Buracas</span>, Hansen J Lillemark, Christian Shewmake, Fatih Dinc, Xavier Pennec, Nina Miolane</p>
+      <div class="foot">
+        <span class="venue">MLST 2025</span>
+        <div class="out">
+          <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">paper</a>
+          <a href="https://arxiv.org/abs/2407.09468">arXiv</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="plate" href="https://openreview.net/forum?id=TF2RcrcTP2"><img src="../images/hesc.png" alt="Figure: group orbit diagram for hierarchical equivariant sparse coding"></a>
+      <h3><a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">Visual Scene Representation with Hierarchical Equivariant Sparse Coding</a></h3>
+      <p class="authors">Christian Shewmake, <span class="me">Domas Buracas</span>, Hansen Lillemark, Jinho Shin, Erik J Bekkers, Nina Miolane, Bruno Olshausen</p>
+      <div class="foot">
+        <span class="venue">NeurReps 2023</span>
+        <div class="out">
+          <a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">paper</a>
+          <a href="https://openreview.net/forum?id=TF2RcrcTP2">OpenReview</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="plate" href="https://arxiv.org/abs/2207.03552"><img src="../images/embeddingdynamic.png" alt="Figure: online and target network diagram for self-supervised learning"></a>
+      <h3><a href="https://arxiv.org/abs/2207.03552">An Embedding-Dynamic Approach to Self-Supervised Learning</a></h3>
+      <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Seunghyun Park, Jinkyu Kim, John Canny</p>
+      <div class="foot">
+        <span class="venue">WACV 2023</span>
+        <div class="out"><a href="https://arxiv.org/abs/2207.03552">arXiv</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="plate" href="https://icml21ssl.github.io/pages/files/bmwreg.pdf"><img src="../images/bmwreg.png" alt="Figure: particles under Brownian diffusive force in embedding space"></a>
+      <h3><a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">BMWReg: Brownian-diffusive, Multiview, Whitening Regularizations for Self-supervised Learning</a></h3>
+      <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Jinkyu Kim, John Canny</p>
+      <div class="foot">
+        <span class="venue">SSL @ ICML 2021</span>
+        <div class="out"><a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">PDF</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ================= orgs ================= -->
+  <div class="orgline">
+    <div><span class="org">NVIDIA</span><span class="tag">AI for autonomous vehicles</span></div>
+    <div><span class="org">Shield AI</span><span class="tag">AI for robotics</span></div>
+    <div><span class="org">Berkeley AI Research</span><span class="tag">Research</span></div>
+    <div><span class="org">UC Berkeley</span><span class="tag">B.S. Computer Science</span></div>
+  </div>
+
+  <footer>
+    <span class="tag">Domas Buracas</span>
+    <span class="tag">Candidate 05 &mdash; Manifold</span>
+  </footer>
+</div>
+
+<script>
+// Deterministic point rosette: sample a wedge, then replicate under the
+// dihedral group D6 so the figure carries true six-fold symmetry.
+(function () {
+  var canvas = document.getElementById('rosette');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var S = canvas.width, c = S / 2;
+
+  var seed = 20250911;
+  function rand() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+
+  ctx.fillStyle = '#ece7fb';
+  ctx.fillRect(0, 0, S, S);
+
+  var points = [], i;
+  for (i = 0; i < 34; i++) {
+    points.push({
+      r: (0.12 + Math.pow(rand(), 0.7) * 0.82) * c,
+      a: rand() * (Math.PI / 3),
+      size: 2 + rand() * 15
+    });
+  }
+
+  for (var k = 0; k < 6; k++) {
+    for (var m = 0; m < 2; m++) {
+      ctx.save();
+      ctx.translate(c, c);
+      ctx.rotate(k * Math.PI / 3);
+      if (m) ctx.scale(1, -1);
+      for (i = 0; i < points.length; i++) {
+        var p = points[i];
+        var x = Math.cos(p.a) * p.r, y = Math.sin(p.a) * p.r;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = 'rgba(109,40,217,0.05)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(109,40,217,' + (0.05 + (p.size / 17) * 0.24).toFixed(3) + ')';
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  ctx.beginPath();
+  ctx.arc(c, c, 26, 0, Math.PI * 2);
+  ctx.fillStyle = '#4c1d95';
+  ctx.fill();
+})();
+</script>
+</body>
+</html>

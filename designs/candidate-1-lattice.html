@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lattice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#fcfcfb;
+  --ink:#15171a;
+  --muted:#63676e;
+  --rule:#e2e3df;
+  --accent:#5b21b6;
+  --accent-soft:#f0ebfa;
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(91,33,182,.28)}
+a:hover{border-bottom-color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%;display:block}
+
+.wrap{
+  max-width:1020px;
+  margin:0 auto;
+  padding-inline:24px;
+  padding-block:0 96px;
+}
+
+/* ---------- masthead ---------- */
+.masthead{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:32px;
+  align-items:end;
+  padding-block:72px 28px;
+  border-bottom:2px solid var(--ink);
+}
+.name{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(2.6rem,7vw,4.4rem);
+  line-height:.95;
+  letter-spacing:-.035em;
+  margin:0;
+  text-wrap:balance;
+}
+.role{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 18px;
+}
+.channels{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  font-family:var(--mono);
+  font-size:.8rem;
+  padding-bottom:6px;
+}
+.channels a{border-bottom:1px solid var(--rule)}
+
+/* ---------- grid rows ---------- */
+.row{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:36px;
+  padding-block:44px;
+  border-bottom:1px solid var(--rule);
+  align-items:start;
+}
+.rail{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:.45em;
+}
+.rail .idx{color:var(--accent);display:block;margin-bottom:.5em}
+.lede{
+  font-size:1.28rem;
+  line-height:1.5;
+  margin:0 0 1.1em;
+  max-width:60ch;
+  text-wrap:pretty;
+}
+.body p{margin:0 0 1em;max-width:64ch}
+.body p:last-child{margin-bottom:0}
+
+.portrait{
+  width:100%;
+  border:1px solid var(--rule);
+  filter:saturate(.92);
+}
+.portrait-cap{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:10px;
+}
+
+/* ---------- affiliations ---------- */
+.orgs{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:0;
+  max-width:64ch;
+}
+.orgs li{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:11px 0;
+  border-bottom:1px solid var(--rule);
+  font-family:var(--display);
+  font-size:.98rem;
+  font-weight:500;
+}
+.orgs li:last-child{border-bottom:0}
+.orgs .what{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:right;
+  align-self:center;
+}
+
+/* ---------- works ---------- */
+.works{display:grid;gap:0}
+.work{
+  display:grid;
+  grid-template-columns:210px 1fr;
+  gap:28px;
+  padding-block:30px;
+  border-top:1px solid var(--rule);
+  align-items:start;
+}
+.work:first-child{border-top:0;padding-top:4px}
+.thumb{
+  border:1px solid var(--rule);
+  background:#fff;
+  aspect-ratio:16/10;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  padding:8px;
+}
+.thumb img{width:100%;height:100%;object-fit:contain}
+.work h3{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.12rem;
+  line-height:1.3;
+  letter-spacing:-.012em;
+  margin:0 0 .45em;
+  text-wrap:balance;
+}
+.work h3 a{color:var(--ink);border-bottom:1px solid var(--rule)}
+.work h3 a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.authors{
+  font-size:.95rem;
+  color:var(--muted);
+  margin:0 0 .5em;
+  line-height:1.5;
+}
+.authors .me{color:var(--ink);font-weight:600}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.06em;
+}
+.venue{
+  background:var(--accent-soft);
+  color:var(--accent);
+  padding:3px 8px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:.66rem;
+}
+.meta a{border-bottom:1px solid var(--rule)}
+.sep{color:var(--rule)}
+
+footer{
+  padding-block:34px 0;
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+@media (max-width:760px){
+  .masthead{grid-template-columns:1fr;align-items:start;gap:18px;padding-block:48px 22px}
+  .row{grid-template-columns:1fr;gap:14px;padding-block:32px}
+  .rail .idx{display:inline;margin-right:.8em}
+  .work{grid-template-columns:1fr;gap:16px}
+  .thumb{max-width:320px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div>
+      <p class="role">Geometric deep learning &middot; 3D vision &middot; robotics</p>
+      <h1 class="name">Domas<br>Buracas</h1>
+    </div>
+    <nav class="channels" aria-label="Contact and profiles">
+      <a href="mailto:domasburacas@gmail.com">Email</a>
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=jktWnL8AAAAJ">Scholar</a>
+      <a href="https://github.com/dekahaedra/">GitHub</a>
+      <a href="https://www.linkedin.com/in/dburacas">LinkedIn</a>
+    </nav>
+  </header>
+
+  <section class="row">
+    <div class="rail">About</div>
+    <div class="body">
+      <p class="lede">My research is at the intersection of 3D vision, robotics, and computer graphics.</p>
+      <p>I work on developing geometric architectures which use structure of the world &mdash; such as symmetries and compositionality &mdash; to build more efficient and generalizable learning systems. I am particularly interested in world models for robotics, equivariant neural networks, and neural&nbsp;(radiance)&nbsp;fields.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="rail">Previously</div>
+    <div>
+      <ul class="orgs">
+        <li><span>NVIDIA</span><span class="what">AI for autonomous vehicles</span></li>
+        <li><span>Shield AI</span><span class="what">AI for robotics</span></li>
+        <li><span>Berkeley AI Research</span><span class="what">Research</span></li>
+        <li><span>UC Berkeley</span><span class="what">B.S. Computer Science</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="rail"><span class="idx">01</span>Selected work</div>
+    <div class="works">
+
+      <article class="work">
+        <a class="thumb" href="https://arxiv.org/abs/2501.01999"><img src="../images/eqstudy.png" alt="Figure: lifting scalar and vector inputs to a sphere for an equivariance study"></a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/2501.01999">Probing Equivariance and Symmetry Breaking in Convolutional Networks</a></h3>
+          <p class="authors">Sharvaree Vadgama, Mohammad Mohaiminul Islam*, <span class="me">Domas Buracas*</span>, Christian A Shewmake, Artem Moskalev, Erik J Bekkers</p>
+          <div class="meta">
+            <span class="venue">NeurIPS 2025</span>
+            <a href="https://arxiv.org/abs/2501.01999">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <a class="thumb" href="https://arxiv.org/abs/2407.09468"><img src="../images/beyondeuclid.png" alt="Figure: grid of geometric, topological and algebraic machine learning structures"></a>
+        <div>
+          <h3><a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">Beyond Euclid: An Illustrated Guide to Modern Machine Learning with Geometric, Topological, and Algebraic Structures</a></h3>
+          <p class="authors">Mathilde Papillon*, Sophia Sanborn*, Johan Mathe*, Louisa Cornelis*, Abby Bertics, <span class="me">Domas Buracas</span>, Hansen J Lillemark, Christian Shewmake, Fatih Dinc, Xavier Pennec, Nina Miolane</p>
+          <div class="meta">
+            <span class="venue">MLST 2025</span>
+            <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">paper</a>
+            <span class="sep">/</span>
+            <a href="https://arxiv.org/abs/2407.09468">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <a class="thumb" href="https://openreview.net/forum?id=TF2RcrcTP2"><img src="../images/hesc.png" alt="Figure: group orbit diagram for hierarchical equivariant sparse coding"></a>
+        <div>
+          <h3><a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">Visual Scene Representation with Hierarchical Equivariant Sparse Coding</a></h3>
+          <p class="authors">Christian Shewmake, <span class="me">Domas Buracas</span>, Hansen Lillemark, Jinho Shin, Erik J Bekkers, Nina Miolane, Bruno Olshausen</p>
+          <div class="meta">
+            <span class="venue">NeurReps @ NeurIPS 2023</span>
+            <a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">paper</a>
+            <span class="sep">/</span>
+            <a href="https://openreview.net/forum?id=TF2RcrcTP2">OpenReview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <a class="thumb" href="https://arxiv.org/abs/2207.03552"><img src="../images/embeddingdynamic.png" alt="Figure: online and target network diagram for self-supervised learning"></a>
+        <div>
+          <h3><a href="https://arxiv.org/abs/2207.03552">An Embedding-Dynamic Approach to Self-Supervised Learning</a></h3>
+          <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Seunghyun Park, Jinkyu Kim, John Canny</p>
+          <div class="meta">
+            <span class="venue">WACV 2023</span>
+            <a href="https://arxiv.org/abs/2207.03552">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <a class="thumb" href="https://icml21ssl.github.io/pages/files/bmwreg.pdf"><img src="../images/bmwreg.png" alt="Figure: particles under Brownian diffusive force in embedding space"></a>
+        <div>
+          <h3><a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">BMWReg: Brownian-diffusive, Multiview, Whitening Regularizations for Self-supervised Learning</a></h3>
+          <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Jinkyu Kim, John Canny</p>
+          <div class="meta">
+            <span class="venue">SSL @ ICML 2021</span>
+            <a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">PDF</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>Domas Buracas</span>
+    <span>Candidate 01 &mdash; Lattice</span>
+  </footer>
+</div>
+</body>
+</html>
