@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --chalk:#eef0e6;
+  --white:#ffffff;
+  --forest:#1d3626;
+  --moss:#4a6b53;
+  --acid:#cadd4c;
+  --ink:#16231a;
+  --hair:#e0e4d8;
+
+  --display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --body:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--chalk);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--forest);text-decoration:none}
+a:focus-visible{outline:2px solid var(--forest);outline-offset:3px;border-radius:3px}
+
+/* =========================================================
+   Two columns on wide views, one column when narrow.
+   The single breakpoint below is the only place that changes.
+   ========================================================= */
+.layout{
+  max-width:1000px;
+  margin:0 auto;
+  padding-inline:20px;
+  padding-block:30px 56px;
+  display:grid;
+  grid-template-columns:282px minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.kicker{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--moss);
+}
+
+/* ---------- sidebar ---------- */
+.side{position:sticky;top:24px;display:flex;flex-direction:column;gap:14px}
+
+.card-id{
+  background:var(--forest);
+  border-radius:14px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.lockup{display:flex;align-items:center;gap:12px}
+.rosette{
+  width:52px;height:52px;
+  flex:none;
+  border-radius:50%;
+  background:var(--acid);
+  display:grid;
+  place-items:center;
+}
+.rosette svg{display:block}
+.lockup .handle{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--acid);
+}
+.card-id img.portrait{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.idtext{display:flex;flex-direction:column;gap:8px}
+.card-id h1{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.72rem;
+  line-height:1.06;
+  color:var(--white);
+  margin:0;
+  letter-spacing:-.01em;
+}
+.card-id .tagline{
+  font-family:var(--display);
+  font-style:italic;
+  font-size:1.02rem;
+  line-height:1.4;
+  color:var(--acid);
+  margin:-4px 0 0;
+}
+.linklist{display:flex;flex-direction:column;margin-top:4px}
+.linklist a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:.76rem;
+  color:var(--chalk);
+  padding:9px 0;
+  border-bottom:1px solid rgba(238,240,230,.16);
+}
+.linklist a:last-child{border-bottom:0;padding-bottom:0}
+.linklist a::after{content:"\2192";color:var(--acid)}
+.linklist a:hover{color:var(--acid)}
+
+/* ---------- sidebar cards ---------- */
+.card{
+  background:var(--white);
+  border-radius:14px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.badges{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.badge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:10px 14px;
+  background:var(--chalk);
+  border-radius:8px;
+  text-align:center;
+}
+.badge img{max-height:28px;width:auto;display:block}
+.badge .wordmark{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.2;
+  color:var(--forest);
+}
+.badge.has-logo .wordmark{display:none}
+
+.keywords{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.keywords li{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.04em;
+  background:var(--chalk);
+  color:var(--forest);
+  border-radius:999px;
+  padding:5px 12px;
+}
+
+/* ---------- content panels ---------- */
+.main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.panel{background:var(--white);border-radius:14px;padding:26px 28px}
+.panel-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--hair);
+}
+.panel-head h2{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.44rem;
+  line-height:1;
+  margin:0;
+}
+.panel-head .kicker{margin-left:auto}
+.panel p.text{margin:0;max-width:60ch;font-size:1.04rem}
+.panel p.lede{
+  font-family:var(--display);
+  font-size:1.26rem;
+  line-height:1.45;
+  margin:0 0 .8em;
+  max-width:54ch;
+}
+
+/* ---------- publications ---------- */
+.refs{display:flex;flex-direction:column}
+.ref{
+  display:grid;
+  grid-template-columns:32px 152px 1fr;
+  gap:18px;
+  align-items:start;
+  padding-block:20px;
+  border-top:1px solid var(--hair);
+}
+.ref:first-child{border-top:0;padding-top:2px}
+.ref .mark{font-family:var(--mono);font-size:.76rem;color:var(--moss);padding-top:.5em}
+.frame{
+  position:relative;
+  border:1px solid var(--hair);
+  border-radius:8px;
+  background:var(--white);
+  aspect-ratio:4/3;
+  overflow:hidden;
+}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px}
+.ref h3{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.18rem;
+  line-height:1.3;
+  margin:0 0 .3em;
+  text-wrap:balance;
+}
+.ref h3 a:hover{color:var(--moss)}
+.authors{font-size:.85rem;color:var(--moss);margin:0 0 .55em;line-height:1.55}
+.authors .me{color:var(--ink);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.venue{
+  background:var(--forest);
+  color:var(--acid);
+  font-family:var(--mono);
+  font-size:.64rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:4px 9px;
+  border-radius:4px;
+}
+.meta a{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--moss);
+  border:1.5px solid var(--hair);
+  border-radius:4px;
+  padding:4px 9px;
+}
+.meta a:hover{border-color:var(--forest);color:var(--forest)}
+
+footer{
+  grid-column:1 / -1;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  padding:2px 8px;
+}
+
+/* ---------- one column ---------- */
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static}
+  .card-id{
+    display:grid;
+    grid-template-columns:auto 150px 1fr;
+    grid-template-areas:"mark portrait text";
+    gap:20px;
+    align-items:center;
+  }
+  .card-id .lockup{grid-area:mark;flex-direction:column;align-items:flex-start;gap:10px}
+  .card-id .lockup .handle{writing-mode:vertical-rl;letter-spacing:.2em}
+  .card-id img.portrait{grid-area:portrait;width:150px;height:150px;aspect-ratio:auto}
+  .card-id .idtext{grid-area:text}
+  .badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr))}
+  .ref{grid-template-columns:28px 1fr;gap:10px 14px}
+  .ref .frame{grid-column:2;max-width:230px;margin-bottom:6px}
+  .ref .txt{grid-column:2}
+  .panel{padding:22px 20px}
+}
+
+@media (max-width:620px){
+  .card-id{
+    grid-template-columns:1fr;
+    grid-template-areas:"mark" "portrait" "text";
+    justify-items:start;
+    gap:16px;
+  }
+  .card-id .lockup{flex-direction:row;align-items:center}
+  .card-id .lockup .handle{writing-mode:horizontal-tb;letter-spacing:.13em}
+  .badges{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="side">
+    <div class="card-id">
+      <div class="lockup">
+        <span class="rosette" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 42 42" fill="#1d3626">
+            <circle cx="21" cy="21" r="5"></circle>
+            <circle cx="21" cy="8" r="4"></circle>
+            <circle cx="21" cy="34" r="4"></circle>
+            <circle cx="9.7" cy="14.5" r="4"></circle>
+            <circle cx="32.3" cy="14.5" r="4"></circle>
+            <circle cx="9.7" cy="27.5" r="4"></circle>
+            <circle cx="32.3" cy="27.5" r="4"></circle>
+          </svg>
+        </span>
+        <span class="handle">dekahaedra</span>
+      </div>
+
+      <img class="portrait" src="../images/headshot.jpg" alt="Domas Buracas">
+
+      <div class="idtext">
+        <h1>Domas Buracas</h1>
+        <p class="tagline">3D vision, robotics &amp; computer graphics</p>
+        <nav class="linklist" aria-label="Contact and profiles">
+          <a href="mailto:domasburacas@gmail.com">Email</a>
+          <a href="https://scholar.google.com/citations?hl=en&amp;user=jktWnL8AAAAJ">Scholar</a>
+          <a href="https://github.com/dekahaedra/">GitHub</a>
+          <a href="https://www.linkedin.com/in/dburacas">LinkedIn</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="kicker">Previously at</span>
+      <ul class="badges">
+        <li class="badge" data-logo="../images/logos/nvidia.svg"><span class="wordmark">NVIDIA</span></li>
+        <li class="badge" data-logo="../images/logos/shield-ai.svg"><span class="wordmark">Shield AI</span></li>
+        <li class="badge" data-logo="../images/logos/bair.svg"><span class="wordmark">Berkeley AI Research</span></li>
+        <li class="badge" data-logo="../images/logos/uc-berkeley.svg"><span class="wordmark">UC Berkeley</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="kicker">Interests</span>
+      <ul class="keywords">
+        <li>Equivariant networks</li>
+        <li>World models</li>
+        <li>Radiance fields</li>
+        <li>Compositionality</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Research</h2>
+        <span class="kicker">Structure as inductive bias</span>
+      </div>
+      <p class="lede">My research is at the intersection of 3D vision, robotics, and computer graphics.</p>
+      <p class="text">I work on developing geometric architectures which use structure of the world &mdash; such as symmetries and compositionality &mdash; to build more efficient and generalizable learning systems. I am particularly interested in world models for robotics, equivariant neural networks, and neural (radiance) fields.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Publications</h2>
+        <span class="kicker">Five papers, 2021&ndash;2025</span>
+      </div>
+      <div class="refs">
+
+        <article class="ref">
+          <span class="mark">[1]</span>
+          <a class="frame" href="https://arxiv.org/abs/2501.01999"><img src="../images/eqstudy.png" alt="Figure: lifting scalar and vector inputs to a sphere for an equivariance study"></a>
+          <div class="txt">
+            <h3><a href="https://arxiv.org/abs/2501.01999">Probing Equivariance and Symmetry Breaking in Convolutional Networks</a></h3>
+            <p class="authors">Sharvaree Vadgama, Mohammad Mohaiminul Islam*, <span class="me">Domas Buracas*</span>, Christian A Shewmake, Artem Moskalev, Erik J Bekkers</p>
+            <div class="meta">
+              <span class="venue">NeurIPS 2025</span>
+              <a href="https://arxiv.org/abs/2501.01999">arXiv</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <span class="mark">[2]</span>
+          <a class="frame" href="https://arxiv.org/abs/2407.09468"><img src="../images/beyondeuclid.png" alt="Figure: grid of geometric, topological and algebraic machine learning structures"></a>
+          <div class="txt">
+            <h3><a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">Beyond Euclid: An Illustrated Guide to Modern Machine Learning with Geometric, Topological, and Algebraic Structures</a></h3>
+            <p class="authors">Mathilde Papillon*, Sophia Sanborn*, Johan Mathe*, Louisa Cornelis*, Abby Bertics, <span class="me">Domas Buracas</span>, Hansen J Lillemark, Christian Shewmake, Fatih Dinc, Xavier Pennec, Nina Miolane</p>
+            <div class="meta">
+              <span class="venue">MLST 2025</span>
+              <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">paper</a>
+              <a href="https://arxiv.org/abs/2407.09468">arXiv</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <span class="mark">[3]</span>
+          <a class="frame" href="https://openreview.net/forum?id=TF2RcrcTP2"><img src="../images/hesc.png" alt="Figure: group orbit diagram for hierarchical equivariant sparse coding"></a>
+          <div class="txt">
+            <h3><a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">Visual Scene Representation with Hierarchical Equivariant Sparse Coding</a></h3>
+            <p class="authors">Christian Shewmake, <span class="me">Domas Buracas</span>, Hansen Lillemark, Jinho Shin, Erik J Bekkers, Nina Miolane, Bruno Olshausen</p>
+            <div class="meta">
+              <span class="venue">NeurReps @ NeurIPS 2023</span>
+              <a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">paper</a>
+              <a href="https://openreview.net/forum?id=TF2RcrcTP2">OpenReview</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <span class="mark">[4]</span>
+          <a class="frame" href="https://arxiv.org/abs/2207.03552"><img src="../images/embeddingdynamic.png" alt="Figure: online and target network diagram for self-supervised learning"></a>
+          <div class="txt">
+            <h3><a href="https://arxiv.org/abs/2207.03552">An Embedding-Dynamic Approach to Self-Supervised Learning</a></h3>
+            <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Seunghyun Park, Jinkyu Kim, John Canny</p>
+            <div class="meta">
+              <span class="venue">WACV 2023</span>
+              <a href="https://arxiv.org/abs/2207.03552">arXiv</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <span class="mark">[5]</span>
+          <a class="frame" href="https://icml21ssl.github.io/pages/files/bmwreg.pdf"><img src="../images/bmwreg.png" alt="Figure: particles under Brownian diffusive force in embedding space"></a>
+          <div class="txt">
+            <h3><a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">BMWReg: Brownian-diffusive, Multiview, Whitening Regularizations for Self-supervised Learning</a></h3>
+            <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Jinkyu Kim, John Canny</p>
+            <div class="meta">
+              <span class="venue">SSL @ ICML 2021</span>
+              <a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">PDF</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span class="kicker">Domas Buracas</span>
+    <span class="kicker">Candidate 11 &mdash; Rosette</span>
+  </footer>
+</div>
+
+<script src="logos.js"></script>
+</body>
+</html>

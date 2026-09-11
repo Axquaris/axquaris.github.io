@@ -8,6 +8,16 @@ Each candidate is one self-contained HTML file: content in the markup, CSS in a 
 Nothing is compiled and there is no framework, so a candidate can be read top to bottom and
 folded back into `index.html` + `stylesheet.css` by hand.
 
+## Round three — current
+
+| # | Name | Direction |
+|---|------|-----------|
+| 11 | Rosette | Ledger's two-column shell with Tabula's rosette glyph as the identity mark. |
+
+Two columns above 900px, one column below — the single `@media (max-width:900px)` block in the
+file is the only place that switch is made, with a second block at 620px that stacks the
+identity card for phones.
+
 ## Round two — blends
 
 Scannable panels (02), the chalk / forest / chartreuse palette and colour blocking (03), and
