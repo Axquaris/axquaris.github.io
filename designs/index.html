@@ -35,7 +35,16 @@ body{
 }
 h1{font-size:2.2rem;line-height:1.1;margin:.3em 0 .4em;letter-spacing:-.02em}
 .intro{max-width:60ch;margin:0 0 8px}
-ol{list-style:none;margin:40px 0 0;padding:0;display:flex;flex-direction:column}
+.group{
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  font-size:.72rem;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:52px 0 10px;
+}
+ol{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column}
 li{padding-block:22px;border-top:1px solid var(--rule)}
 li:last-child{border-bottom:1px solid var(--rule)}
 .row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
@@ -51,9 +60,38 @@ footer a{color:var(--accent)}
 <div class="wrap">
   <p class="label">dekahaedra.github.io</p>
   <h1>Redesign candidates</h1>
-  <p class="intro">Five light-mode directions for the homepage. Each is a single self-contained HTML file with its CSS in a
+  <p class="intro">Light-mode directions for the homepage. Each is a single self-contained HTML file with its CSS in a
   <code>&lt;style&gt;</code> block and the same content, so they can be compared directly and the winner folded back into
   <code>index.html</code> plus <code>stylesheet.css</code>.</p>
+
+  <h2 class="group">Round two &mdash; blends</h2>
+  <p class="intro">Scannable panels, the chalk / forest / chartreuse palette and bibliography-style publication rows,
+  recombined five ways. These carry the institution badges and drop the experience section.</p>
+
+  <ol>
+    <li>
+      <div class="row"><span class="no">06</span><a class="name" href="candidate-6-folio.html">Folio</a></div>
+      <p class="desc">White panels on chalk under a forest name banner, with an acid keyword block in the research panel. The most straightforward blend.</p>
+    </li>
+    <li>
+      <div class="row"><span class="no">07</span><a class="name" href="candidate-7-tabula.html">Tabula</a></div>
+      <p class="desc">Poster header tiles, then each section hung off an acid file tab. Numbered index entries and wide monospace micro-typography.</p>
+    </li>
+    <li>
+      <div class="row"><span class="no">08</span><a class="name" href="candidate-8-strata.html">Strata</a></div>
+      <p class="desc">One rounded sheet of stacked colour bands: forest identity, white about, sage pedigree, white research, paper publications.</p>
+    </li>
+    <li>
+      <div class="row"><span class="no">09</span><a class="name" href="candidate-9-ledger.html">Ledger</a></div>
+      <p class="desc">A sticky forest identity card with the pedigree badges stacked underneath it, beside a column of white content panels.</p>
+    </li>
+    <li>
+      <div class="row"><span class="no">10</span><a class="name" href="candidate-10-rotunda.html">Rotunda</a></div>
+      <p class="desc">An acid masthead over one card per paper, each with an arch-framed figure and a chalk strip holding the venue and links.</p>
+    </li>
+  </ol>
+
+  <h2 class="group">Round one &mdash; first directions</h2>
 
   <ol>
     <li>

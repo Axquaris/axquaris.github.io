@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Folio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --chalk:#eef0e6;
+  --panel:#fbfbf6;
+  --white:#ffffff;
+  --forest:#1d3626;
+  --moss:#4a6b53;
+  --acid:#cadd4c;
+  --ink:#16231a;
+  --hair:#e0e3d6;
+
+  --display:"EB Garamond",Georgia,"Times New Roman",serif;
+  --body:"Work Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--chalk);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--forest);text-decoration:none}
+a:focus-visible{outline:2px solid var(--forest);outline-offset:3px;border-radius:3px}
+
+.wrap{
+  max-width:900px;
+  margin:0 auto;
+  padding-inline:20px;
+  padding-block:34px 60px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.kicker{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--moss);
+}
+
+/* ---------- name banner ---------- */
+.banner{
+  background:var(--forest);
+  border-radius:12px;
+  padding:26px 30px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px 24px;
+}
+.banner h1{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(2.3rem,6vw,3.4rem);
+  line-height:1;
+  color:var(--chalk);
+  margin:0;
+  letter-spacing:.01em;
+}
+.banner .tagline{
+  font-family:var(--display);
+  font-style:italic;
+  font-size:clamp(1rem,2.4vw,1.35rem);
+  color:var(--acid);
+}
+
+/* ---------- panels ---------- */
+.panel{
+  background:var(--white);
+  border-radius:12px;
+  padding:26px 30px;
+}
+.panel-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--hair);
+}
+.panel-head h2{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.5rem;
+  line-height:1;
+  margin:0;
+}
+.panel-head .kicker{margin-left:auto}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:132px 1fr;gap:26px;align-items:start}
+.about img{width:132px;height:132px;border-radius:10px;object-fit:cover}
+.about p{margin:0 0 1em;max-width:58ch}
+.about .lede{font-family:var(--display);font-size:1.3rem;line-height:1.45;margin-bottom:.7em}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.links a{
+  font-family:var(--mono);
+  font-size:.74rem;
+  padding:7px 15px;
+  border-radius:999px;
+  border:1.5px solid var(--forest);
+  transition:background .15s ease,color .15s ease;
+}
+.links a:hover{background:var(--forest);color:var(--acid)}
+
+/* ---------- research ---------- */
+.research{display:grid;grid-template-columns:190px 1fr;gap:26px;align-items:start}
+.chip-block{
+  background:var(--acid);
+  color:var(--forest);
+  border-radius:8px;
+  padding:14px 16px;
+  font-family:var(--mono);
+  font-size:.7rem;
+  line-height:1.7;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.research p{margin:0;max-width:60ch;font-size:1.02rem}
+
+/* ---------- publications ---------- */
+.refs{display:flex;flex-direction:column}
+.ref{
+  display:grid;
+  grid-template-columns:34px 168px 1fr;
+  gap:20px;
+  align-items:start;
+  padding-block:22px;
+  border-top:1px solid var(--hair);
+}
+.ref:first-child{border-top:0;padding-top:4px}
+.ref .mark{
+  font-family:var(--mono);
+  font-size:.78rem;
+  color:var(--moss);
+  padding-top:.45em;
+}
+.frame{
+  position:relative;
+  border:1px solid var(--hair);
+  border-radius:8px;
+  background:var(--white);
+  aspect-ratio:4/3;
+  overflow:hidden;
+}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px}
+.ref h3{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.32rem;
+  line-height:1.24;
+  margin:0 0 .3em;
+  text-wrap:balance;
+}
+.ref h3 a{border-bottom:1.5px solid var(--hair)}
+.ref h3 a:hover{border-bottom-color:var(--acid)}
+.authors{font-size:.86rem;color:var(--moss);margin:0 0 .65em;line-height:1.55}
+.authors .me{color:var(--ink);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.venue{
+  background:var(--forest);
+  color:var(--acid);
+  font-family:var(--mono);
+  font-size:.64rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:4px 9px;
+  border-radius:4px;
+}
+.meta a{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:4px 9px;
+  border-radius:4px;
+  border:1.5px solid var(--hair);
+  color:var(--moss);
+}
+.meta a:hover{border-color:var(--forest);color:var(--forest)}
+
+/* ---------- pedigree badges ---------- */
+.pedigree{display:flex;flex-direction:column;gap:12px}
+.badges{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.badge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:10px 20px;
+  background:var(--chalk);
+  border-radius:8px;
+  border:1.5px solid var(--hair);
+}
+.badge img{max-height:30px;width:auto;display:block}
+.badge .wordmark{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:1.1rem;
+  line-height:1.2;
+  color:var(--forest);
+  white-space:nowrap;
+}
+.badge.has-logo .wordmark{display:none}
+
+footer{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  padding:4px 8px;
+}
+
+@media (max-width:720px){
+  .panel,.banner{padding:22px 20px}
+  .about{grid-template-columns:1fr;gap:18px}
+  .research{grid-template-columns:1fr;gap:16px}
+  .ref{grid-template-columns:30px 1fr;gap:10px 14px}
+  .ref .frame{grid-column:2;max-width:240px;margin-bottom:6px}
+  .ref .txt{grid-column:2}
+  .orgs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="banner">
+    <h1>Domas Buracas</h1>
+    <span class="tagline">3D vision, robotics &amp; graphics</span>
+  </header>
+
+  <section class="panel">
+    <div class="about">
+      <img src="../images/headshot.jpg" alt="Domas Buracas">
+      <div>
+        <p class="lede">My research is at the intersection of 3D vision, robotics, and computer graphics.</p>
+        <p>I've worked on AI for robotics and autonomous vehicles at NVIDIA, Shield AI, and Berkeley AI Research. I received my bachelors in computer science at UC Berkeley.</p>
+        <nav class="links" aria-label="Contact and profiles">
+          <a href="mailto:domasburacas@gmail.com">Email</a>
+          <a href="https://scholar.google.com/citations?hl=en&amp;user=jktWnL8AAAAJ">Scholar</a>
+          <a href="https://github.com/dekahaedra/">GitHub</a>
+          <a href="https://www.linkedin.com/in/dburacas">LinkedIn</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel pedigree">
+    <span class="kicker">Previously at</span>
+    <ul class="badges">
+      <li class="badge" data-logo="../images/logos/nvidia.svg"><span class="wordmark">NVIDIA</span></li>
+      <li class="badge" data-logo="../images/logos/shield-ai.svg"><span class="wordmark">Shield AI</span></li>
+      <li class="badge" data-logo="../images/logos/bair.svg"><span class="wordmark">Berkeley AI Research</span></li>
+      <li class="badge" data-logo="../images/logos/uc-berkeley.svg"><span class="wordmark">UC Berkeley</span></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Research</h2>
+      <span class="kicker">Inductive bias</span>
+    </div>
+    <div class="research">
+      <p class="chip-block">Equivariant networks &middot; world models &middot; radiance fields</p>
+      <p>I work on developing geometric architectures which use structure of the world &mdash; such as symmetries and compositionality &mdash; to build more efficient and generalizable learning systems. I am particularly interested in world models for robotics, equivariant neural networks, and neural (radiance) fields.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Publications</h2>
+      <span class="kicker">Five papers, 2021&ndash;2025</span>
+    </div>
+    <div class="refs">
+
+      <article class="ref">
+        <span class="mark">[1]</span>
+        <a class="frame" href="https://arxiv.org/abs/2501.01999"><img src="../images/eqstudy.png" alt="Figure: lifting scalar and vector inputs to a sphere for an equivariance study"></a>
+        <div class="txt">
+          <h3><a href="https://arxiv.org/abs/2501.01999">Probing Equivariance and Symmetry Breaking in Convolutional Networks</a></h3>
+          <p class="authors">Sharvaree Vadgama, Mohammad Mohaiminul Islam*, <span class="me">Domas Buracas*</span>, Christian A Shewmake, Artem Moskalev, Erik J Bekkers</p>
+          <div class="meta">
+            <span class="venue">NeurIPS 2025</span>
+            <a href="https://arxiv.org/abs/2501.01999">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ref">
+        <span class="mark">[2]</span>
+        <a class="frame" href="https://arxiv.org/abs/2407.09468"><img src="../images/beyondeuclid.png" alt="Figure: grid of geometric, topological and algebraic machine learning structures"></a>
+        <div class="txt">
+          <h3><a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">Beyond Euclid: An Illustrated Guide to Modern Machine Learning with Geometric, Topological, and Algebraic Structures</a></h3>
+          <p class="authors">Mathilde Papillon*, Sophia Sanborn*, Johan Mathe*, Louisa Cornelis*, Abby Bertics, <span class="me">Domas Buracas</span>, Hansen J Lillemark, Christian Shewmake, Fatih Dinc, Xavier Pennec, Nina Miolane</p>
+          <div class="meta">
+            <span class="venue">MLST 2025</span>
+            <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adf375">paper</a>
+            <a href="https://arxiv.org/abs/2407.09468">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ref">
+        <span class="mark">[3]</span>
+        <a class="frame" href="https://openreview.net/forum?id=TF2RcrcTP2"><img src="../images/hesc.png" alt="Figure: group orbit diagram for hierarchical equivariant sparse coding"></a>
+        <div class="txt">
+          <h3><a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">Visual Scene Representation with Hierarchical Equivariant Sparse Coding</a></h3>
+          <p class="authors">Christian Shewmake, <span class="me">Domas Buracas</span>, Hansen Lillemark, Jinho Shin, Erik J Bekkers, Nina Miolane, Bruno Olshausen</p>
+          <div class="meta">
+            <span class="venue">NeurReps @ NeurIPS 2023</span>
+            <a href="https://par.nsf.gov/biblio/10529135-visual-scene-representation-hierarchical-equivariant-sparse-coding">paper</a>
+            <a href="https://openreview.net/forum?id=TF2RcrcTP2">OpenReview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ref">
+        <span class="mark">[4]</span>
+        <a class="frame" href="https://arxiv.org/abs/2207.03552"><img src="../images/embeddingdynamic.png" alt="Figure: online and target network diagram for self-supervised learning"></a>
+        <div class="txt">
+          <h3><a href="https://arxiv.org/abs/2207.03552">An Embedding-Dynamic Approach to Self-Supervised Learning</a></h3>
+          <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Seunghyun Park, Jinkyu Kim, John Canny</p>
+          <div class="meta">
+            <span class="venue">WACV 2023</span>
+            <a href="https://arxiv.org/abs/2207.03552">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ref">
+        <span class="mark">[5]</span>
+        <a class="frame" href="https://icml21ssl.github.io/pages/files/bmwreg.pdf"><img src="../images/bmwreg.png" alt="Figure: particles under Brownian diffusive force in embedding space"></a>
+        <div class="txt">
+          <h3><a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">BMWReg: Brownian-diffusive, Multiview, Whitening Regularizations for Self-supervised Learning</a></h3>
+          <p class="authors">Suhong Moon, <span class="me">Domas Buracas</span>, Jinkyu Kim, John Canny</p>
+          <div class="meta">
+            <span class="venue">SSL @ ICML 2021</span>
+            <a href="https://icml21ssl.github.io/pages/files/bmwreg.pdf">PDF</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <span class="kicker">Domas Buracas</span>
+    <span class="kicker">Candidate 06 &mdash; Folio</span>
+  </footer>
+</div>
+
+<script src="logos.js"></script>
+</body>
+</html>
