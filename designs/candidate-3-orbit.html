@@ -226,15 +226,13 @@ a:focus-visible{outline:2px solid var(--forest);outline-offset:3px}
   padding-top:.3em;
 }
 .entry .fig{
+  position:relative;
   background:var(--paper);
   border-radius:70px 70px 6px 6px;
   aspect-ratio:4/3;
-  display:grid;
-  place-items:center;
   overflow:hidden;
-  padding:16px 12px 12px;
 }
-.entry .fig img{width:100%;height:100%;object-fit:contain}
+.entry .fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px 14px 14px}
 .entry h3{
   font-family:var(--display);
   font-weight:400;

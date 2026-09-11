@@ -164,15 +164,13 @@ img{max-width:100%;display:block}
 }
 .work:first-child{border-top:0;padding-top:4px}
 .thumb{
+  position:relative;
   border:1px solid var(--rule);
   background:#fff;
   aspect-ratio:16/10;
-  display:grid;
-  place-items:center;
   overflow:hidden;
-  padding:8px;
 }
-.thumb img{width:100%;height:100%;object-fit:contain}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px}
 .work h3{
   font-family:var(--display);
   font-weight:600;

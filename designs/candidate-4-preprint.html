@@ -136,15 +136,13 @@ h2 .dots{
 .ref .mark{color:var(--accent);font-size:.8rem;padding-top:.55em}
 .figbox{display:flex;flex-direction:column;gap:7px}
 .figbox .frame{
+  position:relative;
   border:1px solid var(--rule);
   background:#fff;
   aspect-ratio:4/3;
-  display:grid;
-  place-items:center;
   overflow:hidden;
-  padding:7px;
 }
-.figbox .frame img{width:100%;height:100%;object-fit:contain}
+.figbox .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px}
 .figbox figcaption{font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .ref h3{
   font-family:var(--serif);
