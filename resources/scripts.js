@@ -15,20 +15,15 @@ const onClick = () => {
         : 'light';
 
     setPreference();
-    updateTheme(theme.value);
 };
 
 /**
- * Retrieves the color preference from local storage or based on the user's system preference.
+ * Retrieves the color preference from local storage, defaulting to light.
  * @returns {string} The color preference ('dark' or 'light').
  */
 const getColorPreference = () => {
-    if (localStorage.getItem(storageKey))
-        return localStorage.getItem(storageKey);
-    else
-        return window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light';
+    const stored = localStorage.getItem(storageKey);
+    return stored === 'dark' || stored === 'light' ? stored : 'light';
 };
 
 /**
@@ -60,39 +55,11 @@ const reflectPreference = () => {
  * @property {string} value - The current theme value.
  */
 const theme = {
-    // value: getColorPreference(), // Set the default theme to light (professional)
-    value: 'dark',
+    value: getColorPreference(),
 };
 
 // set early so no page flashes / CSS is made aware
 reflectPreference();
-
-// sync with system changes
-window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', ({ matches: isDark }) => {
-        theme.value = isDark ? 'dark' : 'light';
-        setPreference();
-    });
-
-// // This part remains unchanged - it's your existing theme toggle logic
-// function updateTheme(theme) {
-//   const bodyClassList = document.body.classList;
-//   console.log(bodyClassList);
-//   if (theme === 'dark') {
-//     bodyClassList.add('theme-dark');
-//     bodyClassList.remove('theme-light');
-//   } else {
-//     bodyClassList.add('theme-light');
-//     bodyClassList.remove('theme-dark');
-//   }
-//   // No need to modify this function for div visibility, CSS handles it based on the body class
-// }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   updateTheme(theme.value);
-// });
-
 
 // Function to load external HTML content
 function loadPapers() {
